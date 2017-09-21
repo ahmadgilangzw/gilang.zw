@@ -8,6 +8,7 @@ package com.imd.friendsManagement.utility;
 public class Constants {
 
 	public static final String HEADER_PATH = "/service";
+	public static final String BASE_URI = "http://localhost:8080";
 
 	public static final class SUB_PATH {
 		// People

@@ -57,7 +57,7 @@ public class PeopleController {
 			}
 			result = PojoJsonMapper.toJson(people);
 			LOGGER.info("### snd : " + result);
-			return new ResponseEntity<>(result, HttpStatus.OK);
+			return new ResponseEntity<>(result, HttpStatus.CREATED);
 		} catch (BusinessException e) {
 			result = EngineUtils.getMessageBusinessException(e);
 			LOGGER.info("### snd : " + result);
