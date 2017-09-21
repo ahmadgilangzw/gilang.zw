@@ -22,7 +22,7 @@ public final class EngineUtils {
 		param.put(Constants.UTILS.CODE_ERROR, e.getErrorCode());
 		param.put(Constants.UTILS.DESCRIPTION, e.getMessage());
 
-		return PojoJsonMapper.toJson(param);
+		return PojoJsonMapper.toJsonNotPretty(param);
 	}
 	
 	public static String getMessageException(Exception e){
@@ -30,6 +30,6 @@ public final class EngineUtils {
 		param.put(Constants.UTILS.ERROR, true);
 		param.put(Constants.UTILS.DESCRIPTION, Constants.UTILS.SIE);
 
-		return PojoJsonMapper.toJson(param);
+		return PojoJsonMapper.toJsonNotPretty(param);
 	}
 }

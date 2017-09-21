@@ -12,7 +12,9 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,7 +61,7 @@ public class SendReceivedEmailController {
 	private SendReceivedEmailService sendReceivedEmailService;
 
 	@RequestMapping(value = Constants.SUB_PATH.SEND_EMAIL, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String addSubscribe(@RequestBody String parameter) {
+	public ResponseEntity<String> addSubscribe(@RequestBody String parameter) {
 		LOGGER.info("### rcv : " + parameter);
 
 		String result;
@@ -90,25 +92,24 @@ public class SendReceivedEmailController {
 
 					// get List Recipients
 					listRecipients = getRecipientsList(listFriend, listSubscribe, listMentioned);
-					recipients = PojoJsonMapper.toJson(listRecipients);
 
 					saveData(sender, text, recipients);
 					param.put(Constants.UTILS.SUCCESS, true);
-					param.put(PARAM_RECIPIENTS, recipients);
+					param.put(PARAM_RECIPIENTS, listRecipients);
 					result = PojoJsonMapper.toJson(param);
 					LOGGER.info("### snd : " + result);
-					return result;
+					return new ResponseEntity<>(result, HttpStatus.OK);
 				}
 			}
 		} catch (BusinessException e) {
 			result = EngineUtils.getMessageBusinessException(e);
 			LOGGER.info("### snd : " + result);
-			return result;
+			throw new RuntimeException(result);
 		} catch (Exception e) {
 			result = EngineUtils.getMessageException(e);
 			LOGGER.info("### snd : " + result);
 			e.printStackTrace();
-			return result;
+			throw new RuntimeException(result);
 		}
 	}
 

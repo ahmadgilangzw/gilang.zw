@@ -17,47 +17,101 @@ This service have 7 REST API.
 	- URL    		: http://localhost:8080/service/add-people
 	- METHOD 		: POST
 	- CONTENT-TYPE	: application/json
-	- REQUEST 		: { "name" : "Jhon", "emailAddress" : "john@example.com" }
-	- RESPONSE		: { "id": 10, "name": "Jhon", "emailAddress": "john@example.com", "created": "19 09 2017 17:25:28", "updated": "19 09 2017 17:25:28" }
+	- REQUEST 		: { 
+						"name" : "Jhon", 
+						"emailAddress" : "john@example.com" 
+					  }
+	- RESPONSE		: { 
+						"id": 10, 
+						"name": "Jhon", 
+						"emailAddress": 
+						"john@example.com", 
+						"created": "19 09 2017 17:25:28", "updated": "19 09 2017 17:25:28" 
+					  }
 
 2. API for "Create Friend Connection"
 	- URL			: http://localhost:8080/service/add-friend
 	- METHOD		: POST
 	- CONTENT-TYPE	: application/json
-	- REQUEST		: { "friends": [ "john@example.com", "common@example.com" ] }
-	- RESPONSE		: { "Success": true }
+	- REQUEST		: { 
+						"friends": [ 
+							"john@example.com", 
+							"common@example.com" 
+							] 
+					  }
+	- RESPONSE		: { 
+						"Success": true 
+					  }
 	
 3. API for "Retrieve The Friend List"
 	- URL 			: http://localhost:8080/service/find-all-friend
 	- METHOD		: POST
 	- CONTENT-TYPE	: application/json
-	- REQUEST		: { "email": "andy@example.com" }
-	- RESPONSE		: { "friends": "[\"john@example.com\"]", "count": 1, "Success": true }
+	- REQUEST		: { 
+						"email": "andy@example.com" 
+					  }
+	- RESPONSE		: {
+						"friends": [
+							"john@example.com"
+						],
+						"count": 1,
+						"Success": true
+					  }
 	
 4. API for "Retrieve The Commons Friend list Between Two Email Address"
 	- URL			: http://localhost:8080/service/find-f-between-two-email
 	- METHOD		: POST
 	- CONTENT-TYPE 	: application/json
-	- REQUEST		: { "friends": [ "andy@example.com", "john@example.com" }
-	- RESPONSE		: { "friends": "[\"common@example.com\"]", "count": 1, "Success": true }
+	- REQUEST		: { 
+						"friends": [ 
+							"andy@example.com", 
+							"john@example.com" 
+					  }
+	- RESPONSE		: {
+						"friends": [
+							"common@example.com"
+						],
+						"count": 1,
+						"Success": true
+					  }
 	
 5. API for "Subscribe People"
 	- URL			: http://localhost:8080/service/add-subscribe
 	- METHOD		: POST
 	- CONTENT-TYPE	: application/json
-	- REQUEST		: { "requestor": "lisa@example.com",   "target": "john@example.com" }
-	- RESPONSE		: { "Success": true }
+	- REQUEST		: { 
+						"requestor": "lisa@example.com",   
+						"target": "john@example.com" 
+					  }
+	- RESPONSE		: { 
+						"Success": true 
+					  }
 	
 6. API for "Block People"
 	- URL 			: http://localhost:8080/service/block-people
 	- METHOD		: POST
 	- CONTENT-TYPE	: application/json
-	- REQUEST		: {   "requestor": "andy@example.com",   "target": "john@example.com" } 
-	- RESPONSE		: { "Success": true }
+	- REQUEST		: {   
+						"requestor": "andy@example.com",   
+						"target": "john@example.com" 
+					  } 
+	- RESPONSE		: { 
+						"Success": true 
+					  }
 	
 7. API for "Retrieve All Email Address That Can Receive Updateds"
 	- URL 			: http://localhost:8080/service/send-email
 	- METHOD		: POST
 	- CONTENT-TYPE	: application/json
-	- REQUEST		: {   "sender":  "john@example.com",   "text": "Hello World! kate@example.com" } 
-	- RESPONSE		: { "recipients": "[\"common@example.com\",\"lisa@example.com\",\"kate@example.com\"]", "Success": true }
+	- REQUEST		: {   
+						"sender":  "john@example.com",   
+						"text": "Hello World! kate@example.com" 
+					  } 
+	- RESPONSE		: {
+						"recipients": [
+							"common@example.com",
+							"lisa@example.com",
+							"kate@example.com"
+						],
+						"Success": true
+					  }

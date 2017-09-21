@@ -8,7 +8,9 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,7 +51,7 @@ public class SubscribeController {
 	private FriendService friendService;
 
 	@RequestMapping(value = Constants.SUB_PATH.ADD_SUBSCRIBE, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String addSubscribe(@RequestBody String parameter) {
+	public ResponseEntity<String> addSubscribe(@RequestBody String parameter) {
 		LOGGER.info("### rcv : " + parameter);
 
 		String result;
@@ -78,23 +80,23 @@ public class SubscribeController {
 					param.put(Constants.UTILS.SUCCESS, true);
 					result = PojoJsonMapper.toJson(param);
 					LOGGER.info("### snd : " + result);
-					return result;
+					return new ResponseEntity<>(result, HttpStatus.OK);
 				}
 			}
 		} catch (BusinessException e) {
 			result = EngineUtils.getMessageBusinessException(e);
 			LOGGER.info("### snd : " + result);
-			return result;
+			throw new RuntimeException(result);
 		} catch (Exception e) {
 			result = EngineUtils.getMessageException(e);
 			LOGGER.info("### snd : " + result);
 			e.printStackTrace();
-			return result;
+			throw new RuntimeException(result);
 		}
 	}
 
 	@RequestMapping(value = Constants.SUB_PATH.BLOCK_PEOPLE, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String blockPeople(@RequestBody String parameter) {
+	public ResponseEntity<String> blockPeople(@RequestBody String parameter) {
 		LOGGER.info("### rcv : " + parameter);
 
 		String result;
@@ -148,18 +150,18 @@ public class SubscribeController {
 					param.put(Constants.UTILS.SUCCESS, true);
 					result = PojoJsonMapper.toJson(param);
 					LOGGER.info("### snd : " + result);
-					return result;
+					return new ResponseEntity<>(result, HttpStatus.OK);
 				}
 			}
 		} catch (BusinessException e) {
 			result = EngineUtils.getMessageBusinessException(e);
 			LOGGER.info("### snd : " + result);
-			return result;
+			throw new RuntimeException(result);
 		} catch (Exception e) {
 			result = EngineUtils.getMessageException(e);
 			LOGGER.info("### snd : " + result);
 			e.printStackTrace();
-			return result;
+			throw new RuntimeException(result);
 		}
 	}
 
