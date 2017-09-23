@@ -6,192 +6,113 @@ Description the code
 
 1. People Controller
 
-
-
-- We have method registerPeople this method used for register the new people for join in our application. You are cannot using email in this API without registered before.
-- In this method we have Parameter Object People, you can request this api by JSON value like :
-{
-	"name" : "example",
-	"emailAddress" : "example@example.com"
-}
-- If parameter is null, email already registered or the code have exception, the method will return the error message.
-- If Success, the data will saved to the database and this api will return value of people created.
-
-
-
-
-
-
-
-
-
+	* We have method registerPeople this method used for register the new people for join in our application. You are cannot using email in this API without registered before.
+		- In this method we have Parameter Object People, you can request this api by JSON value like :
+		{
+			"name" : "example",
+			"emailAddress" : "example@example.com"
+		}
+		- If parameter is null, email already registered or the code have exception, the method will return the error message.
+		- If Success, the data will saved to the database and this api will return value of people created.
 
 2. Friend Controller
 
-This controller used for manage all about friend, like add friend, find friend and find friend between two email.
-
-In this controller we have 3 API URL Method.
-
-* Method registerFriend
-
-
-
-- we have method registerFriend, this method used for add a new friend.
-- In this method we must request using JSON format like 
-{
-  "friends": [
-    "andy@example.com",
-    "common@example.com"
-  ]
-}
-- If the parameter request is null, email not registered yet, email already to be friend or the code have Error Exception, this method will return error message.
-- If success, data will be saved to database and return success true.
-
-
-
-
-
-* Method findAllFriend
-
-
-
-- This method will used for find all friend by parameter JSON email.
-- We must request JSON parameter like :
-{ 
-  "email":  "example@example.com"
-}
-- If the parameter null, email does not contain friend or code have error exception this method will return error message.
-- If success the method will return list of friend for your email.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* Method findFriendBetweenTwoEmail
-
-
-
-- This method is used for find friend who are friends with both emails.
-- We must request using JSON format like :
-{
-  "friends": [
-    "example@example.com",
-    "ex@example.com"
-  ]
-}
-
-- If the parameter null, both of email not contain friends, or the code have exception, this method will return the error message.
-- If success, this method will return list of friend by JSON format.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* Subscribe Controller
-
-This controller used for manage all about subscribe like add subscribe, block people or unsubscribe.
-
-In this controller we have 2 API URL Method.
-
-- Method addSubscribe
-
-
-
-- This method used for add a new subscribe.
-- You can request this metho by JSON format value like :
-{   
-   "requestor": "lisa@example.com",   
-   "target": "john@example.com" 
-         }
-- If the parameter is null, email not registered yet, email already subscribe, or the code have error exception, this method will return the error message.
-- If success, the data will be save to the database and this method will return success true.
-
-
-
-
-
-
-
-
-
-- Method blockPeople
-
-
-
-- This method used for block people or unsubscribe.
-- If the email requestor and email target not already to be friend, email target will be bloked.
-- If the email requestor and email target already to be friend, email target will be unsubscribe.
-- If parameter null, email not already registerd, email already blocked, email already unsubscribed, this method will return the error message.
-- If success, this method will save the data and return success true.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* Send Received Email Controller
-
-This controller used for send message.
-
-This controller just have one method.
-
-- Method sendEmail
-
-
-
-- This method used for send message to friend, subscribe or mentioned.
-- You can request this method with JSON format value like : 
-{   
-   "sender":  "john@example.com",   
-   "text": "Hello World! kate@example.com" 
-          }
-- If parameter is null, sender not already registered, or code have error exception, this method will return the error message.
-- If success, the data will be save and will return success true and list of send message.
-
-
-
-
-
-
-
-
-
-
-
+	This controller used for manage all about friend, like add friend, find friend and find friend between two email.
+
+	In this controller we have 3 API URL Method.
+
+	* Method registerFriend	
+		- we have method registerFriend, this method used for add a new friend.
+		- In this method we must request using JSON format like 
+			{
+			  "friends": [
+				"andy@example.com",
+				"common@example.com"
+			  ]
+			}
+		- If the parameter request is null, email not registered yet, email already to be friend or the code have Error Exception, this method will return error message.
+		- If success, data will be saved to database and return success true.
+
+	* Method findAllFriend
+		- This method will used for find all friend by parameter JSON email.
+		- We must request JSON parameter like :
+			{ 
+			  "email":  "example@example.com"
+			}
+		- If the parameter null, email does not contain friend or code have error exception this method will return error message.
+		- If success the method will return list of friend for your email.
+
+	* Method findFriendBetweenTwoEmail
+		- This method is used for find friend who are friends with both emails.
+		- We must request using JSON format like :
+			{
+			  "friends": [
+				"example@example.com",
+				"ex@example.com"
+			  ]
+			}
+		- If the parameter null, both of email not contain friends, or the code have exception, this method will return the error message.
+		- If success, this method will return list of friend by JSON format.
+
+3 Subscribe Controller
+
+	This controller used for manage all about subscribe like add subscribe, block people or unsubscribe.
+
+	In this controller we have 2 API URL Method.
+
+	* Method addSubscribe
+		- This method used for add a new subscribe.
+		- You can request this method by JSON format value like :
+			{   
+			   "requestor": "lisa@example.com",   
+			   "target": "john@example.com" 
+			}
+		- If the parameter is null, email not registered yet, email already subscribe, or the code have error exception, this method will return the error message.
+		- If success, the data will be save to the database and this method will return success true.
+
+	* Method blockPeople
+		- This method used for block people or unsubscribe.
+		- You can request this method by JSON format value like :
+			{   
+				"requestor": "andy@example.com",   
+				"target": "john@example.com" 
+			} 
+		- If the email requestor and email target not already to be friend, email target will be bloked.
+		- If the email requestor and email target already to be friend, email target will be unsubscribe.
+		- If parameter null, email not already registerd, email already blocked, email already unsubscribed, this method will return the error message.
+		- If success, this method will save the data and return success true.
+		
+
+4. Send Received Email Controller
+
+	This controller used for send message.
+
+	This controller just have one method.
+
+	* Method sendEmail
+		- This method used for send message to friend, subscribe or mentioned.
+		- You can request this method with JSON format value like : 
+			{   
+			   "sender":  "john@example.com",   
+			   "text": "Hello World! kate@example.com" 
+			}
+		- If parameter is null, sender not already registered, or code have error exception, this method will return the error message.
+		- If success, the data will be save and will return success true and list of send message.
+
+About UNIT TEST
+
+In this Project I used JUNIT for unit testing.
+have 2 methode for unit testing.
+
+1. in package com.imd.friendsManagement.repository :
+	- Unit testing class in this package, used for check the repository already good or not.
+	- In this package, the unit test no need the service run.
+	- Because in here i used entityManager, so you just edit edit the value and parameter
+2. in package com.imd.friendsManagement.controller :
+	- Unit testing class in this package, used for check the URL API already good or not.
+	- In this package, the unit need the service run.
+	- Becase in here i used RequestEntity so this is can hit the url service.
+		
 How to Run
 
 1. Clone this repository
@@ -307,3 +228,4 @@ This service have 7 REST API.
 						],
 						"Success": true
 					  }
+
