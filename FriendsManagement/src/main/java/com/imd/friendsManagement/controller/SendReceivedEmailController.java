@@ -61,7 +61,7 @@ public class SendReceivedEmailController {
 	private SendReceivedEmailService sendReceivedEmailService;
 
 	@RequestMapping(value = Constants.SUB_PATH.SEND_EMAIL, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> addSubscribe(@RequestBody String parameter) {
+	public ResponseEntity<String> sendEmail(@RequestBody String parameter) {
 		LOGGER.info("### rcv : " + parameter);
 
 		String result;
