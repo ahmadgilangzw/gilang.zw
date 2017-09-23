@@ -54,7 +54,7 @@ Description the code
 		- If the parameter null, both of email not contain friends, or the code have exception, this method will return the error message.
 		- If success, this method will return list of friend by JSON format.
 
-3 Subscribe Controller
+3. Subscribe Controller
 
 	This controller used for manage all about subscribe like add subscribe, block people or unsubscribe.
 
@@ -82,7 +82,6 @@ Description the code
 		- If parameter null, email not already registerd, email already blocked, email already unsubscribed, this method will return the error message.
 		- If success, this method will save the data and return success true.
 		
-
 4. Send Received Email Controller
 
 	This controller used for send message.
